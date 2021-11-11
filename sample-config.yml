@@ -1,2 +1,5 @@
 urls:
+  # The `root` key is special, and will redirect both / as well as /root.
   root: https://example.com
+  # The following example redirects /foo to https://example.com/foobar.
+  foo: https://example.com/foobar
