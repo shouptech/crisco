@@ -46,6 +46,3 @@ pytest:
 
 include:
   template: Container-Scanning.gitlab-ci.yml
-container_vulnerability_scanning:
-  extends: container_scanning
-  stage: test
