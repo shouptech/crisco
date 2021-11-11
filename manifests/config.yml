@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: crisco
+data:
+  config.yml: |
+    urls:
+      root: https://www.example.com
+      foo: https://www.example.com/foobar

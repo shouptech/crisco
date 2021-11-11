@@ -8,7 +8,7 @@ this context is really just redirecting a `key` to a `value`.
 ## Running docker image
 
 Create a config file defining the URLs you want. See
-[`sample-config.yaml`](sample-config.yaml) for examples.
+[`sample-config.yml`](sample-config.yml) for examples.
 
 Run the docker image:
 
@@ -17,3 +17,10 @@ docker run -v /path/to/your/config.yml:/config/config.yml -p 8000:8000 registry.
 ```
 
 Rejoice!
+
+## Running in Kubernetes
+
+The directory [manifests/](manifests) has some example Kubernetes manifests for running
+Crisco. You'll want to modify them to suit your environment. Particularly you may need
+changes to [`config.yml`](manifests/config.yml) and
+[`ingress.yml`](manifests/ingress.yml).

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: crisco
+  name: crisco
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crisco
+  template:
+    metadata:
+      labels:
+        app: crisco
+    spec:
+      containers:
+      - image: registry.gitlab.com/shouptech/crisco:latest
+        name: crisco
+        ports:
+          - containerPort: 8000
+            name: http
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 10m
+          limits:
+            memory: 128Mi
+            cpu: 100m
+        volumeMounts:
+          - mountPath: /config
+            name: config
+            readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          name: crisco
