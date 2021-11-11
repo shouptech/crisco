@@ -26,6 +26,7 @@ install_requires = [
     "uvicorn >=0.15, <0.16",
     "pyyaml ~= 5.4",
     "aiofiles ~= 0.7",
+    "requests ~= 2.26",
 ]
 
 setup(
