@@ -17,7 +17,7 @@ import os
 
 import yaml
 import aiofiles
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import RedirectResponse
 
 
@@ -36,6 +36,8 @@ async def load_config():
 @app.get("/{path}", response_class=RedirectResponse)
 async def get_path(path):
     config = await load_config()
+    if path not in config["urls"]:
+        raise HTTPException(status_code=404, detail="Path not found")
     return config["urls"][path]
 
 
