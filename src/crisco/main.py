@@ -18,7 +18,7 @@ import os
 import yaml
 import aiofiles
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, PlainTextResponse
 
 
 app = FastAPI()
@@ -31,6 +31,11 @@ async def load_config():
         data = await file.read()
 
     return yaml.safe_load(data)
+
+
+@app.get("/-/health")
+async def health():
+    return PlainTextResponse("OK")
 
 
 @app.get("/{path}", response_class=RedirectResponse)

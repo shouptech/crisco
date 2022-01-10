@@ -29,3 +29,8 @@ def test_read_root():
 def test_404():
     response = client.get("/doesnotexist")
     assert response.status_code == 404
+
+def test_health_check():
+    response = client.get("/-/health")
+    assert response.status_code == 200
+    assert response.text == "OK"
